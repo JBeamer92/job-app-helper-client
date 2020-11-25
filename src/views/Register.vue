@@ -1,8 +1,8 @@
 <template>
   <v-container>
-
     <v-row class="text-center">
       <v-col class="col-12">
+        <div style="height: 200px"></div>
         <h1 class="display-2 font-weight-bold mb-3">
           Start your registration now!
         </h1>
@@ -92,7 +92,7 @@ export default {
       this.select = null
       this.checkbox = false
     },
-  },
+  }
 }
 </script>
 
