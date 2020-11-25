@@ -1,24 +1,3 @@
 # job-app-helper-client
-
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Consumes the API in my other repository.
+I know there's probably a way to combine the two projects and deploy them together, but I'm keeping things separated for now so my feeble mind doesn't get overwhelmed while I'm learning different technologies (Vue and FastAPI)
