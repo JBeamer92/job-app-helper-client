@@ -6,7 +6,7 @@
       hide-on-scroll
   >
     <div class="d-flex align-center">
-      <v-toolbar-title @click="$router.push('/')" style="cursor:pointer">Job App Helper</v-toolbar-title>
+      <v-toolbar-title @click="$router.push('/')" style="cursor:pointer">App Track Studio</v-toolbar-title>
     </div>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">

@@ -8,22 +8,19 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { title: 'App Track Studio' }
   },
   {
     path: '/register',
     name: 'Register',
-    // route level code-splitting
-    // this generates a separate chunk (register.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    meta: { title: 'App Track Studio' },
     component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue')
   },
   {
     path: '/login',
     name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (login.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    meta: { title: 'App Track Studio' },
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   }
 ]
@@ -33,5 +30,9 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+});
 
 export default router
