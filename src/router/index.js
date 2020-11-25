@@ -9,18 +9,18 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { title: 'App Track Studio' }
+    meta: { title: 'AppTrack Studio' }
   },
   {
     path: '/register',
     name: 'Register',
-    meta: { title: 'App Track Studio' },
+    meta: { title: 'AppTrack Studio' },
     component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue')
   },
   {
     path: '/login',
     name: 'Login',
-    meta: { title: 'App Track Studio' },
+    meta: { title: 'AppTrack Studio' },
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   }
 ]
