@@ -17,7 +17,7 @@
           </h1>
 
           <p class="subheading font-weight-regular">
-            Job hunting is painful. Resumes. Cover letters. Tracking interviews. Job requirements. Its all just awful.<br>
+            Landing the right job can be painful. Resumes. Cover letters. Tracking applications. Job requirements. It can all be overwhelming.<br>
             Our mission is simple: <strong>Take the stress out of looking for jobs.</strong>
           </p>
           <h3>More Coming Very Soon</h3>
