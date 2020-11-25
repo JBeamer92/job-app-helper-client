@@ -1,13 +1,20 @@
 <template>
-  <div class="login">
-    <h1>This is a login page</h1>
-  </div>
+  <v-container>
+    <v-row justify="center">
+      <h1>This is an unfinished Login page</h1>
+    </v-row>
+  </v-container>
 </template>
 
 
 <script>
+
 export default {
-name: "Login"
+  name: 'Login',
+
+  data: () => ({
+    //
+  })
 }
 </script>
 

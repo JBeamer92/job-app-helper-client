@@ -34,7 +34,7 @@
           <v-row justify="center">
             <v-btn
                 color="#DE8D47"
-
+                to="/register"
             >
               Register Now
             </v-btn>
