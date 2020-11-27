@@ -3,6 +3,7 @@
       app
       color="#868685"
       dark
+      dense
       hide-on-scroll
   >
     <div class="d-flex align-center">
@@ -11,8 +12,7 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn to="/" text exact-active-class="">Home</v-btn>
-      <v-btn to="/register" text exact-active-class="">Register</v-btn>
-      <v-btn to="/login" text exact-active-class="">Login</v-btn>
+      <v-btn to="/demo" text exact-active-class="">Demo</v-btn>
     </v-toolbar-items>
     <v-app-bar-nav-icon class="hidden-md-and-up"></v-app-bar-nav-icon>
   </v-app-bar>
