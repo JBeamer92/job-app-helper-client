@@ -48,9 +48,6 @@
 
 import { validationMixin } from 'vuelidate'
 import { required, email } from 'vuelidate/lib/validators'
-import axios from 'axios'
-import qs from 'qs'
-
 
 export default {
   mixins: [validationMixin],
@@ -62,8 +59,7 @@ export default {
 
   data: () => ({
     email: '',
-    password: '',
-    access_token: ''
+    password: ''
   }),
 
   computed: {
@@ -84,25 +80,12 @@ export default {
 
   methods: {
     submit () {
+      console.log('I have clicked the login button!')
       this.$v.$touch()
-      const data = {
-        'grant_type': 'password',
-        'username': this.email,
-        'password':  this.password
-      };
-      const options = {
-        method: 'POST',
-        headers: { 'content-type': 'application/x-www-form-urlencoded' },
-        data: qs.stringify(data),
-        url: 'http://localhost:8000/token'
-      };
-      axios(options)
-          .then((response) => {
-            this.access_token = response.data.access_token
-          })
-          .catch((error) => {
-            console.log('We done goofed: ' + error)
-          })
+      this.$store.dispatch('retrieveToken', {
+        email: this.email,
+        password: this.password
+      })
     }
   }
 }
