@@ -17,27 +17,30 @@ export const store = new Vuex.Store({
    },
    actions: {
        retrieveToken(context, credentials) {
-           const data = {
-               'grant_type': 'password',
-               'username': credentials.email,
-               'password':  credentials.password
-           };
-           const options = {
-               method: 'POST',
-               headers: { 'content-type': 'application/x-www-form-urlencoded' },
-               data: qs.stringify(data),
-               url: '/token'
-           };
-           axios(options)
-               .then((response) => {
-                   console.log(response)
-                   const token = response.data.access_token
-                   localStorage.setItem('access_token', token)
-                   context.commit('retrieveToken', token)
-               })
-               .catch((error) => {
-                   console.log('We done goofed: ' + error)
-               })
+           return new Promise((resolve, reject) => {
+               const data = {
+                   'grant_type': 'password',
+                   'username': credentials.email,
+                   'password':  credentials.password
+               };
+               const options = {
+                   method: 'POST',
+                   headers: { 'content-type': 'application/x-www-form-urlencoded' },
+                   data: qs.stringify(data),
+                   url: '/token'
+               };
+               axios(options)
+                   .then((response) => {
+                       const token = response.data.access_token
+                       localStorage.setItem('access_token', token)
+                       context.commit('retrieveToken', token)
+                       resolve(response)
+                   })
+                   .catch((error) => {
+                       console.log('We done goofed: ' + error)
+                       reject(error)
+                   })
+           })
        }
    }
 });

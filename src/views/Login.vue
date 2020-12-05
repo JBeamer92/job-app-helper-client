@@ -80,11 +80,14 @@ export default {
 
   methods: {
     submit () {
-      console.log('I have clicked the login button!')
       this.$v.$touch()
       this.$store.dispatch('retrieveToken', {
         email: this.email,
         password: this.password
+      })
+          // eslint-disable-next-line no-unused-vars
+      .then( response => {
+        this.$router.push({name: 'Demo'})
       })
     }
   }
