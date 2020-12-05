@@ -3,9 +3,9 @@
 <!--Navigation-->
     <Navigation/>
 <!--Body-->
-    <v-content>
+    <v-main>
       <router-view/>
-    </v-content>
+    </v-main>
 <!--Footer-->
     <Footer/>
   </v-app>
