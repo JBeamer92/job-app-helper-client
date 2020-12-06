@@ -32,7 +32,7 @@
 // import axios from 'axios'
 
 export default {
-  name: 'Demo',
+  name: 'Applications',
   components: {
     // Example
   },

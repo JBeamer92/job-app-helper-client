@@ -12,7 +12,7 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn to="/" text exact-active-class="">Home</v-btn>
-      <v-btn v-if="loggedIn" to="/demo" text exact-active-class="">Demo</v-btn>
+      <v-btn v-if="loggedIn" to="/apps" text exact-active-class="">Apps</v-btn>
       <v-btn v-if="!loggedIn" to="/register" text exact-active-class="">Register</v-btn>
       <v-btn v-if="!loggedIn" to="/login" text exact-active-class="">Login</v-btn>
       <v-btn v-if="loggedIn" to="/logout" text exact-active-class="">Logout</v-btn>

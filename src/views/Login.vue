@@ -87,7 +87,7 @@ export default {
       })
           // eslint-disable-next-line no-unused-vars
       .then( response => {
-        this.$router.push({name: 'Demo'})
+        this.$router.push({name: 'Home'})
       })
     }
   }

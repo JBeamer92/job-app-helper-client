@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-container>
-      <v-row class="text-center">
+      <v-row v-if="!this.$store.getters.loggedIn" class="text-center">
         <v-col cols="12">
           <v-img
               :src="require('../assets/girl-laptop.png')"
@@ -40,6 +40,9 @@
             </v-btn>
           </v-row>
         </v-col>
+      </v-row>
+      <v-row v-if="this.$store.getters.loggedIn" class="text-center">
+        <h1>You're logged in!</h1>
       </v-row>
     </v-container>
   </div>

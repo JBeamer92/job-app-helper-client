@@ -24,10 +24,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
-    path: '/demo',
-    name: 'Demo',
+    path: '/logout',
+    name: 'Logout',
     meta: { title: 'AppTrack Studio' },
-    component: () => import(/* webpackChunkName: "login" */ '../views/Demo.vue')
+    component: () => import(/* webpackChunkName: "logout" */ '../components/Logout.vue')
+  },
+  {
+    path: '/apps',
+    name: 'Apps',
+    meta: { title: 'AppTrack Studio' },
+    component: () => import(/* webpackChunkName: "login" */ '../views/Applications.vue')
   }
 ]
 
