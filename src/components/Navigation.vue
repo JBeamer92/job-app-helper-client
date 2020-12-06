@@ -12,9 +12,11 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn to="/" text exact-active-class="">Home</v-btn>
-      <v-btn to="/demo" text exact-active-class="">Demo</v-btn>
-      <v-btn to="/register" text exact-active-class="">Register</v-btn>
-      <v-btn to="/login" text exact-active-class="">Login</v-btn>
+      <v-btn v-if="loggedIn" to="/demo" text exact-active-class="">Demo</v-btn>
+      <v-btn v-if="!loggedIn" to="/register" text exact-active-class="">Register</v-btn>
+      <v-btn v-if="!loggedIn" to="/login" text exact-active-class="">Login</v-btn>
+      <v-btn v-if="loggedIn" to="/logout" text exact-active-class="">Logout</v-btn>
+
     </v-toolbar-items>
     <v-app-bar-nav-icon class="hidden-md-and-up"></v-app-bar-nav-icon>
   </v-app-bar>
@@ -22,7 +24,12 @@
 
 <script>
 export default {
-name: "Navigation"
+  name: "Navigation",
+  computed: {
+    loggedIn() {
+      return this.$store.getters.loggedIn
+    }
+  }
 }
 </script>
 
