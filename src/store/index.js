@@ -63,17 +63,17 @@ export const store = new Vuex.Store({
                context.commit('destroyToken')
            }
        },
-       retrieveApplications({commit, getters}) {
+       retrieveApplications(context) {
            // TODO: check that user is logged in first
            // return new Promise( (resolve, reject) =>{
                axios.get('/apps', {
                    headers: {
-                       'Authorization': 'Bearer ' + getters.token
+                       'Authorization': 'Bearer ' + context.state.token
                    }
                })
                    .then((response) => {
                        console.log(response)
-                       commit('retrieveApplications', response.data)
+                       context.commit('retrieveApplications', response.data)
                        // resolve(response)
                    })
                    .catch((error) => {
