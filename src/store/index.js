@@ -14,6 +14,9 @@ export const store = new Vuex.Store({
     getters: {
       loggedIn(state) {
           return state.token !== null
+      },
+      token(state) {
+          return state.token
       }
     },
    mutations : {
@@ -55,24 +58,30 @@ export const store = new Vuex.Store({
            })
        },
        destroyToken(context) {
-           // TODO: implement API method to destroy token on server-side
            if (context.getters.loggedIn) {
                localStorage.removeItem('access_token')
                context.commit('destroyToken')
            }
        },
-       retrieveApplications() {
-           return new Promise( (resolve, reject) =>{
-               axios.get('/apps')
+       retrieveApplications({commit, getters}) {
+           // TODO: check that user is logged in first
+           // return new Promise( (resolve, reject) =>{
+               axios.get('/apps', {
+                   headers: {
+                       'Authorization': 'Bearer ' + getters.token
+                   }
+               })
                    .then((response) => {
                        console.log(response)
-                       resolve(response)
+                       commit('retrieveApplications', response.data)
+                       // resolve(response)
                    })
                    .catch((error) => {
                        console.log(error)
-                       reject(error)
+                       throw new Error ('API ${error}')
+                       // reject(error)
                    })
-           })
+           // })
        }
    }
 });

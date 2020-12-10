@@ -46,31 +46,11 @@ export default {
         { text: 'Status', value: 'events[0].type'},
         { text: 'Updated', value: 'events[0].date'}
       ],
-      apps: [
-        {
-          'id': 1,
-          'company': {
-            id: 1,
-            'name': 'Anthem'
-          },
-          'position': {
-            'title': 'Developer I',
-            'id': null,
-            'url': 'www.sample.com',
-            'location': {
-              'city': 'Indianapolis',
-              'state': 'IN'
-            }
-          },
-          'events': [
-            {
-              'type': 'APPLIED',
-              'date': '10/15/2020'
-            }
-          ]
-        }
-      ]
+      apps: []
     }
+  },
+  created() {
+    this.$store.dispatch('retrieveApplications')
   }
 }
 </script>
