@@ -20,6 +20,9 @@ export const store = new Vuex.Store({
       }
     },
    mutations : {
+       clearApplications(state) {
+           state.applications = null
+       },
        retrieveToken(state, token) {
            state.token = token
        },
@@ -31,6 +34,9 @@ export const store = new Vuex.Store({
        }
    },
    actions: {
+       clearApplications(context) {
+           context.commit('clearApplications')
+       },
        retrieveToken(context, credentials) {
            return new Promise((resolve, reject) => {
                const data = {

@@ -6,6 +6,7 @@
 export default {
   name: "Logout",
   created() {
+    this.$store.dispatch('clearApplications')
     this.$store.dispatch('destroyToken')
         // eslint-disable-next-line no-unused-vars
         .then( response => {
