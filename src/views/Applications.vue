@@ -50,7 +50,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('retrieveApplications')
+    this.apps = this.$store.dispatch('retrieveApplications')
   }
 }
 </script>

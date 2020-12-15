@@ -71,7 +71,7 @@ export const store = new Vuex.Store({
        },
        retrieveApplications(context) {
            // TODO: check that user is logged in first
-           // return new Promise( (resolve, reject) =>{
+           return new Promise( (resolve, reject) =>{
                axios.get('/apps', {
                    headers: {
                        'Authorization': 'Bearer ' + context.state.token
@@ -80,14 +80,14 @@ export const store = new Vuex.Store({
                    .then((response) => {
                        console.log(response)
                        context.commit('retrieveApplications', response.data)
-                       // resolve(response)
+                       resolve(response)
                    })
                    .catch((error) => {
                        console.log(error)
-                       throw new Error ('API ${error}')
-                       // reject(error)
+                       // throw new Error ('API ${error}')
+                       reject(error)
                    })
-           // })
+           })
        }
    }
 });
