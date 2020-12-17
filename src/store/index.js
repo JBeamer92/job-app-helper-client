@@ -9,7 +9,7 @@ axios.defaults.baseURL = 'http://localhost:8000' // TODO: Need to make this dyna
 export const store = new Vuex.Store({
    state: {
        token: null,
-       applications: null
+       postings: null
    },
     getters: {
       loggedIn(state) {
@@ -20,8 +20,8 @@ export const store = new Vuex.Store({
       }
     },
    mutations : {
-       clearApplications(state) {
-           state.applications = null
+       clearPostings(state) {
+           state.postings = null
        },
        retrieveToken(state, token) {
            state.token = token
@@ -29,13 +29,13 @@ export const store = new Vuex.Store({
        destroyToken(state) {
            state.token = null
        },
-       retrieveApplications(state, applications) {
-           state.applications = applications
+       retrievePostings(state, postings) {
+           state.postings = postings
        }
    },
    actions: {
-       clearApplications(context) {
-           context.commit('clearApplications')
+       clearPostings(context) {
+           context.commit('clearPostings')
        },
        retrieveToken(context, credentials) {
            return new Promise((resolve, reject) => {
@@ -69,24 +69,17 @@ export const store = new Vuex.Store({
                context.commit('destroyToken')
            }
        },
-       retrieveApplications(context) {
-           // TODO: check that user is logged in first
-           return new Promise( (resolve, reject) =>{
-               axios.get('/apps', {
-                   headers: {
-                       'Authorization': 'Bearer ' + context.state.token
-                   }
-               })
-                   .then((response) => {
-                       console.log(response)
-                       context.commit('retrieveApplications', response.data)
-                       resolve(response)
-                   })
-                   .catch((error) => {
-                       console.log(error)
-                       // throw new Error ('API ${error}')
-                       reject(error)
-                   })
+       retrievePostings(context) {
+           axios.get('/postings', {
+               headers: {
+                   'Authorization': 'Bearer ' + context.state.token
+               }
+           })
+           .then((response) => {
+               context.commit('retrievePostings', response.data)
+           })
+           .catch((error) => {
+               console.log(error)
            })
        }
    }
