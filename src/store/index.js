@@ -9,16 +9,53 @@ axios.defaults.baseURL = 'http://localhost:8000' // TODO: Need to make this dyna
 export const store = new Vuex.Store({
    state: {
        token: null,
-       postings: null
+       postings: [
+           {
+               "position": "Developer Hardcode",
+               "company": "Test Co.",
+               "url": "www.anthem.com/jobs",
+               "id": 1,
+               "owner_id": 1,
+               "events": [
+                   {
+                       "name": "Application submitted",
+                       "date": "12/14/2020",
+                       "id": 1,
+                       "posting_id": 3
+                   }
+               ]
+           },
+           {
+               "position": "QA Hardcode",
+               "company": "Test & Sons",
+               "url": "www.adp.com/jobs",
+               "id": 2,
+               "owner_id": 1,
+               "events": [
+                   {
+                       "name": "Application submitted",
+                       "date": "12/16/2020",
+                       "id": 1,
+                       "posting_id": 3
+                   }
+               ]
+           }
+       ]
    },
+    // use getters for computed properties
     getters: {
       loggedIn(state) {
           return state.token !== null
       },
       token(state) {
           return state.token
+      },
+      postings(state) {
+          return state.postings
       }
+
     },
+    // use mutations for synchronous changes
    mutations : {
        clearPostings(state) {
            state.postings = null
@@ -33,6 +70,9 @@ export const store = new Vuex.Store({
            state.postings = postings
        }
    },
+    // actions are like mutations, but allow for asynchronous code
+    // most often, this is used for some sort of ajax call
+    // TODO: understand 'state' vs 'context' (params for mutations, actions)
    actions: {
        clearPostings(context) {
            context.commit('clearPostings')
@@ -63,10 +103,11 @@ export const store = new Vuex.Store({
                    })
            })
        },
-       destroyToken(context) {
-           if (context.getters.loggedIn) {
+       // can also 'destructure' the input params and just grab a particular part of the context, like 'commit'
+       destroyToken({commit, getters}) {
+           if (getters.loggedIn) {
                localStorage.removeItem('access_token')
-               context.commit('destroyToken')
+               commit('destroyToken')
            }
        },
        retrievePostings(context) {

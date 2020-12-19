@@ -49,13 +49,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import Example from '@/components/Example.vue'
 
 export default {
-  name: 'Home',
-  components: {
-    // Example
-  }
+  name: 'Home'
 }
 </script>
