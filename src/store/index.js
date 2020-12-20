@@ -72,12 +72,13 @@ export const store = new Vuex.Store({
    },
     // actions are like mutations, but allow for asynchronous code
     // most often, this is used for some sort of ajax call
-    // TODO: understand 'state' vs 'context' (params for mutations, actions)
+    // input params are 'destructured' - grab a particular part of the context, like 'commit'
+    // other option for param is to simply pass in 'context', without the braces {}
    actions: {
-       clearPostings(context) {
-           context.commit('clearPostings')
+       clearPostings({commit}) {
+           commit('clearPostings')
        },
-       retrieveToken(context, credentials) {
+       retrieveToken({commit}, credentials) {
            return new Promise((resolve, reject) => {
                const data = {
                    'grant_type': 'password',
@@ -94,7 +95,7 @@ export const store = new Vuex.Store({
                    .then((response) => {
                        const token = response.data.access_token
                        localStorage.setItem('access_token', token)
-                       context.commit('retrieveToken', token)
+                       commit('retrieveToken', token)
                        resolve(response)
                    })
                    .catch((error) => {
@@ -110,14 +111,14 @@ export const store = new Vuex.Store({
                commit('destroyToken')
            }
        },
-       retrievePostings(context) {
+       retrievePostings({commit, state}) {
            axios.get('/postings', {
                headers: {
-                   'Authorization': 'Bearer ' + context.state.token
+                   'Authorization': 'Bearer ' + state.token
                }
            })
            .then((response) => {
-               context.commit('retrievePostings', response.data)
+               commit('retrievePostings', response.data)
            })
            .catch((error) => {
                console.log(error)
