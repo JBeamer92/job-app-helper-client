@@ -35,6 +35,9 @@ export default {
 
     }
   },
+  created() {
+    this.$store.dispatch('retrievePostings')
+  },
   computed: {
     apps() {
       return this.$store.getters.postings

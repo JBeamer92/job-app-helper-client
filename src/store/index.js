@@ -9,38 +9,7 @@ axios.defaults.baseURL = 'http://localhost:8000' // TODO: Need to make this dyna
 export const store = new Vuex.Store({
    state: {
        token: null,
-       postings: [
-           {
-               "position": "Developer Hardcode",
-               "company": "Test Co.",
-               "url": "www.anthem.com/jobs",
-               "id": 1,
-               "owner_id": 1,
-               "events": [
-                   {
-                       "name": "Application submitted",
-                       "date": "12/14/2020",
-                       "id": 1,
-                       "posting_id": 3
-                   }
-               ]
-           },
-           {
-               "position": "QA Hardcode",
-               "company": "Test & Sons",
-               "url": "www.adp.com/jobs",
-               "id": 2,
-               "owner_id": 1,
-               "events": [
-                   {
-                       "name": "Application submitted",
-                       "date": "12/16/2020",
-                       "id": 1,
-                       "posting_id": 3
-                   }
-               ]
-           }
-       ]
+       postings: []
    },
     // use getters for computed properties
     getters: {
@@ -104,7 +73,6 @@ export const store = new Vuex.Store({
                    })
            })
        },
-       // can also 'destructure' the input params and just grab a particular part of the context, like 'commit'
        destroyToken({commit, getters}) {
            if (getters.loggedIn) {
                localStorage.removeItem('access_token')
