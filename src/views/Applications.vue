@@ -4,6 +4,7 @@
       <v-row class="text-center">
         <v-col class="mb-4">
           <h1>Postings Go Here</h1>
+          <AddPosting></AddPosting>
           <v-simple-table>
             <template v-slot:default>
               <thead>
@@ -27,9 +28,13 @@
 </template>
 
 <script>
+import AddPosting from "@/components/postings/AddPosting";
 
 export default {
   name: 'Applications',
+  components :{
+    AddPosting
+  },
   data() {
     return {
 
