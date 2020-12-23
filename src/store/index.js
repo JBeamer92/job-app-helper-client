@@ -37,6 +37,9 @@ export const store = new Vuex.Store({
        },
        retrievePostings(state, postings) {
            state.postings = postings
+       },
+       addPosting(state, posting) {
+           state.postings.push(posting)
        }
    },
     // actions are like mutations, but allow for asynchronous code
@@ -46,6 +49,29 @@ export const store = new Vuex.Store({
    actions: {
        clearPostings({commit}) {
            commit('clearPostings')
+       },
+       // Can probably optimize this action
+       addPosting({commit, state}, posting) {
+           return new Promise((resolve, reject) => {
+               const options = {
+                   method: 'POST',
+                   headers: {
+                       'content-type': 'application/json',
+                       'Authorization': 'Bearer ' + state.token
+                   },
+                   data: posting,
+                   url: '/postings'
+               };
+               axios(options)
+                   .then(response => {
+                       commit('addPosting', response.data)
+                       resolve(response)
+                   })
+                   .catch(error => {
+                       console.log('We done goofed: ' + error)
+                       reject(error)
+                   })
+           })
        },
        retrieveToken({commit}, credentials) {
            return new Promise((resolve, reject) => {

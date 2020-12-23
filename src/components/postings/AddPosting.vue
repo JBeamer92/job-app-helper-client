@@ -30,7 +30,7 @@
                 >
                   <v-text-field
                       label="Position title*"
-                      v-model="newPosting.title"
+                      v-model="newPosting.position"
                       required
                   ></v-text-field>
                 </v-col>
@@ -125,7 +125,7 @@ name: "AddPosting",
     return {
       dialog: false,
       newPosting: {
-        title: '',
+        position: '',
         company: '',
         url: '',
         events: []
@@ -136,13 +136,15 @@ name: "AddPosting",
     submit() {
       this.dialog = false
       console.log(this.newPosting.title, this.newPosting.company, this.newPosting.url)
-      this.newPosting.title = ''
+      this.$store.dispatch('addPosting', this.newPosting)
+      // Can I split this out to 'reset form' method?
+      this.newPosting.position = ''
       this.newPosting.company = ''
       this.newPosting.url = ''
     },
     cancel() {
       this.dialog = false
-      this.newPosting.title = ''
+      this.newPosting.position = ''
       this.newPosting.company = ''
       this.newPosting.url = ''
     }
