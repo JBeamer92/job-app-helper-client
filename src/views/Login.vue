@@ -19,6 +19,7 @@
               required
               @input="$v.email.$touch()"
               @blur="$v.email.$touch()"
+              @keyup.enter="submit"
           ></v-text-field>
           <v-text-field
               type="password"
@@ -27,6 +28,7 @@
               label="Password"
               @input="$v.password.$touch()"
               @blur="$v.password.$touch()"
+              @keyup.enter="submit"
           ></v-text-field>
         </v-form>
       </v-col>
