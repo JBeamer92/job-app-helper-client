@@ -21,10 +21,10 @@
                 <td>
                   <v-btn
                       icon
-                      color="pink"
+                      color="grey"
                       @click="removePosting(app.id)"
                   >
-                    <v-icon>mdi-cancel</v-icon>
+                    <v-icon>mdi-close</v-icon>
                   </v-btn>
                 </td>
               </tr>
