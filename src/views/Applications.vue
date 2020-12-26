@@ -11,12 +11,22 @@
               <tr>
                 <th>Position</th>
                 <th>Company</th>
+                <th></th>
               </tr>
               </thead>
               <tbody>
               <tr v-for="app in apps" :key="app.id">
                 <td>{{ app.position }}</td>
                 <td>{{ app.company }}</td>
+                <td>
+                  <v-btn
+                      icon
+                      color="pink"
+                      @click="removePosting(app.id)"
+                  >
+                    <v-icon>mdi-cancel</v-icon>
+                  </v-btn>
+                </td>
               </tr>
               </tbody>
             </template>
@@ -42,6 +52,11 @@ export default {
   },
   created() {
     this.$store.dispatch('retrievePostings')
+  },
+  methods: {
+    removePosting(posting_id) {
+      console.log('Deleting posting with ID:  ' + posting_id.toString())
+    }
   },
   computed: {
     apps() {
