@@ -40,6 +40,10 @@ export const store = new Vuex.Store({
        },
        addPosting(state, posting) {
            state.postings.push(posting)
+       },
+       deletePosting(state, id) {
+           const index = state.postings.filter(posting => posting.id == id)
+           state.postings.splice(index, 1)
        }
    },
     // actions are like mutations, but allow for asynchronous code
@@ -117,6 +121,20 @@ export const store = new Vuex.Store({
            .catch((error) => {
                console.log(error)
            })
+       },
+       deletePosting({commit, state}, id) {
+           axios.delete('/postings/' + id, {
+               headers: {
+                   'Authorization': 'Bearer ' + state.token
+               }
+           })
+               // eslint-disable-next-line no-unused-vars
+               .then(response => {
+                   commit('deletePosting', id)
+               })
+               .catch(error => {
+                   console.log(error)
+               })
        }
    }
 });

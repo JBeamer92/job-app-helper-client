@@ -56,6 +56,7 @@ export default {
   methods: {
     removePosting(posting_id) {
       console.log('Deleting posting with ID:  ' + posting_id.toString())
+      this.$store.dispatch('deletePosting', posting_id)
     }
   },
   computed: {
