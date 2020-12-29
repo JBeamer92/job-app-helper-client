@@ -3,7 +3,7 @@
     <v-container>
       <v-row class="text-center">
         <v-col class="mb-4">
-          <h1>Postings Go Here</h1>
+          <h1>My Postings</h1>
           <AddPosting></AddPosting>
           <v-simple-table>
             <template v-slot:default>
@@ -11,6 +11,7 @@
               <tr>
                 <th>Position</th>
                 <th>Company</th>
+                <th>URL</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -19,6 +20,7 @@
               <tr v-for="app in apps" :key="app.id">
                 <td>{{ app.position }}</td>
                 <td>{{ app.company }}</td>
+                <td><a :href="'//' + app.url" :target="_b">{{ app.url }}</a></td>
                 <td>
                   <v-btn
                       icon
@@ -55,7 +57,6 @@ export default {
   },
   data() {
     return {
-
     }
   },
   created() {
