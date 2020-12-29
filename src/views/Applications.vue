@@ -12,12 +12,20 @@
                 <th>Position</th>
                 <th>Company</th>
                 <th></th>
+                <th></th>
               </tr>
               </thead>
               <tbody>
               <tr v-for="app in apps" :key="app.id">
                 <td>{{ app.position }}</td>
                 <td>{{ app.company }}</td>
+                <td>
+                  <v-btn
+                      icon
+                      color="grey">
+                    <v-icon>mdi-pencil-outline</v-icon>
+                  </v-btn>
+                </td>
                 <td>
                   <v-btn
                       icon
